@@ -1,4 +1,4 @@
-package ru.wt.gostev;
+package ru.wt.gostev.Model;
 
 public class GroupData {
     private final String name;

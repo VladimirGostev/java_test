@@ -1,17 +1,16 @@
-package ru.wt.gostev;
+package ru.wt.gostev.AppManager;
 
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.wt.gostev.Model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by VGostev on 03.05.2017.
  */
-public class TestBase {
+public class AplicationManager {
     ChromeDriver wd;
 
     public static boolean isAlertPresent(ChromeDriver wd) {
@@ -23,8 +22,7 @@ public class TestBase {
         }
     }
 
-    @Before
-    public void setUp() throws Exception {
+    protected void init() {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         login("admin", "secret");
@@ -41,15 +39,15 @@ public class TestBase {
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
     }
 
-    protected void returntoGroupPage() {
+    public void returntoGroupPage() {
         wd.findElement(By.linkText("group page")).click();
     }
 
-    protected void submitGroupCreation() {
+    public void submitGroupCreation() {
         wd.findElement(By.name("submit")).click();
     }
 
-    protected void fillGroupForm(GroupData groupData) {
+    public void fillGroupForm(GroupData groupData) {
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
         wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -61,24 +59,23 @@ public class TestBase {
         wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
     }
 
-    protected void initGroupCreation() {
+    public void initGroupCreation() {
         wd.findElement(By.name("new")).click();
     }
 
-    protected void gotoGroupPage() {
+    public void gotoGroupPage() {
         wd.findElement(By.linkText("groups")).click();
     }
 
-    @After
-    public void tearDown() {
+    public void stop() {
         wd.quit();
     }
 
-    protected void deleteSelectedGroups() {
+    public void deleteSelectedGroups() {
         wd.findElement(By.name("delete")).click();
     }
 
-    protected void selectGroup() {
+    public void selectGroup() {
         wd.findElement(By.name("selected[]")).click();
     }
 }
