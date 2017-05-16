@@ -2,6 +2,7 @@ package ru.wt.gostev.Tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.remote.BrowserType;
 import ru.wt.gostev.AppManager.AplicationManager;
 
 /**
@@ -9,7 +10,7 @@ import ru.wt.gostev.AppManager.AplicationManager;
  */
 public class TestBase {
 
-    protected final AplicationManager app = new AplicationManager();
+    protected final AplicationManager app = new AplicationManager(BrowserType.IE);
 
     @Before
     public void setUp() throws Exception {
@@ -21,4 +22,7 @@ public class TestBase {
         app.stop();
     }
 
+    public AplicationManager getApp() {
+        return app;
+    }
 }
