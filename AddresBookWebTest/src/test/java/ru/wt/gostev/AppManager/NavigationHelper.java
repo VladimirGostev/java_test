@@ -22,6 +22,6 @@ public class NavigationHelper extends HelperBase{
     }
 
     public void gotoAbonentModificationPage() {
-        click(By.xpath(".//*[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+        click(By.xpath(".//*[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
 }

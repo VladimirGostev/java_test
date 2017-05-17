@@ -42,4 +42,13 @@ public class AbonentHelper extends HelperBase{
     public void submitAbonentModification() {
         click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }
+
+    public void creationAbonent(AbonentDate abonentDate, boolean b) {
+        fillAbonentForm(abonentDate, true);
+        submitAbonentCreation();
+    }
+
+    public boolean isTheAAbonent() {
+        return isElementPresent(By.xpath(".//*[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+    }
 }
