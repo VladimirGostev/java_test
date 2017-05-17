@@ -11,7 +11,7 @@ public class AbonentCreationTest extends TestBase {
         app.getNavigationHalper().gotoAbonentPage();
         app.getAbonentHelper().fillAbonentForm(new AbonentDate("TestName", "TestLasrName",
                 "TestNameCompany", "dddff f22 asd2", "21246", "89005003020", "445556",
-                "485612", "first@mail.test", "www.test.ru"));
+                "485612", "first@mail.test", "www.test.ru", "test1"), true);
         app.getAbonentHelper().submitAbonentCreation();
     }
 

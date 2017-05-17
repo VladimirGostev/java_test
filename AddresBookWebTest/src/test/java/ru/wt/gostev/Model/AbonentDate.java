@@ -11,11 +11,12 @@ public class AbonentDate {
     private final String faxNumber;
     private final String emailAbonent;
     private final String homePageAbonent;
+    private String group;
 
     public AbonentDate(String firstAbonentName, String lastAbonentName, String companyName,
                        String addressAbonent, String homePhoneNumber, String mobilePhoneNumber,
                        String workPhoneNumber, String faxNumber, String emailAbonent,
-                       String homePageAbonent) {
+                       String homePageAbonent, String group) {
         this.firstAbonentName = firstAbonentName;
         this.lastAbonentName = lastAbonentName;
         this.companyName = companyName;
@@ -26,6 +27,7 @@ public class AbonentDate {
         this.faxNumber = faxNumber;
         this.emailAbonent = emailAbonent;
         this.homePageAbonent = homePageAbonent;
+        this.group = group;
     }
 
     public String getFirstAbonentName() {
@@ -66,5 +68,9 @@ public class AbonentDate {
 
     public String getHomePageAbonent() {
         return homePageAbonent;
+    }
+
+    public String getGroup() {
+        return group;
     }
 }

@@ -1,7 +1,10 @@
 package ru.wt.gostev.AppManager;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 import ru.wt.gostev.Model.AbonentDate;
 
 /**
@@ -13,7 +16,7 @@ public class AbonentHelper extends HelperBase{
         super(wd);
     }
 
-    public void fillAbonentForm(AbonentDate abonentDate) {
+    public void fillAbonentForm(AbonentDate abonentDate, boolean creation) {
         type(By.name("firstname"),abonentDate.getFirstAbonentName());
         type(By.name("lastname"),abonentDate.getLastAbonentName());
         type(By.name("company"),abonentDate.getCompanyName());
@@ -24,12 +27,18 @@ public class AbonentHelper extends HelperBase{
         type(By.name("fax"),abonentDate.getFaxNumber());
         type(By.name("email"),abonentDate.getEmailAbonent());
         type(By.name("homepage"),abonentDate.getHomePageAbonent());
+
+        if(creation){
+            new Select(wd.findElement(By.name("new_group"))).
+                    selectByVisibleText(abonentDate.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
     }
 
     public void submitAbonentCreation() {
         click(By.xpath("//input[@name='submit']"));
     }
-
     public void submitAbonentModification() {
         click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }

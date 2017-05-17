@@ -10,7 +10,7 @@ import ru.wt.gostev.AppManager.AplicationManager;
  */
 public class TestBase {
 
-    protected final AplicationManager app = new AplicationManager(BrowserType.IE);
+    protected final AplicationManager app = new AplicationManager(BrowserType.CHROME);
 
     @Before
     public void setUp() throws Exception {
@@ -19,7 +19,7 @@ public class TestBase {
 
     @After
     public void tearDown() {
-        app.stop();
+        getApp().stop();
     }
 
     public AplicationManager getApp() {
