@@ -30,6 +30,66 @@ public class AbonentDate {
         this.group = group;
     }
 
+    @Override
+    public String toString() {
+        return "AbonentDate{" +
+                "firstAbonentName='" + firstAbonentName + '\'' +
+                ", lastAbonentName='" + lastAbonentName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", addressAbonent='" + addressAbonent + '\'' +
+                ", homePhoneNumber='" + homePhoneNumber + '\'' +
+                ", mobilePhoneNumber='" + mobilePhoneNumber + '\'' +
+                ", workPhoneNumber='" + workPhoneNumber + '\'' +
+                ", faxNumber='" + faxNumber + '\'' +
+                ", emailAbonent='" + emailAbonent + '\'' +
+                ", homePageAbonent='" + homePageAbonent + '\'' +
+                ", group='" + group + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AbonentDate that = (AbonentDate) o;
+
+        if (firstAbonentName != null ? !firstAbonentName.equals(that.firstAbonentName) : that.firstAbonentName != null)
+            return false;
+        if (lastAbonentName != null ? !lastAbonentName.equals(that.lastAbonentName) : that.lastAbonentName != null)
+            return false;
+        if (companyName != null ? !companyName.equals(that.companyName) : that.companyName != null) return false;
+        if (addressAbonent != null ? !addressAbonent.equals(that.addressAbonent) : that.addressAbonent != null)
+            return false;
+        if (homePhoneNumber != null ? !homePhoneNumber.equals(that.homePhoneNumber) : that.homePhoneNumber != null)
+            return false;
+        if (mobilePhoneNumber != null ? !mobilePhoneNumber.equals(that.mobilePhoneNumber) : that.mobilePhoneNumber != null)
+            return false;
+        if (workPhoneNumber != null ? !workPhoneNumber.equals(that.workPhoneNumber) : that.workPhoneNumber != null)
+            return false;
+        if (faxNumber != null ? !faxNumber.equals(that.faxNumber) : that.faxNumber != null) return false;
+        if (emailAbonent != null ? !emailAbonent.equals(that.emailAbonent) : that.emailAbonent != null) return false;
+        if (homePageAbonent != null ? !homePageAbonent.equals(that.homePageAbonent) : that.homePageAbonent != null)
+            return false;
+        return group != null ? group.equals(that.group) : that.group == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstAbonentName != null ? firstAbonentName.hashCode() : 0;
+        result = 31 * result + (lastAbonentName != null ? lastAbonentName.hashCode() : 0);
+        result = 31 * result + (companyName != null ? companyName.hashCode() : 0);
+        result = 31 * result + (addressAbonent != null ? addressAbonent.hashCode() : 0);
+        result = 31 * result + (homePhoneNumber != null ? homePhoneNumber.hashCode() : 0);
+        result = 31 * result + (mobilePhoneNumber != null ? mobilePhoneNumber.hashCode() : 0);
+        result = 31 * result + (workPhoneNumber != null ? workPhoneNumber.hashCode() : 0);
+        result = 31 * result + (faxNumber != null ? faxNumber.hashCode() : 0);
+        result = 31 * result + (emailAbonent != null ? emailAbonent.hashCode() : 0);
+        result = 31 * result + (homePageAbonent != null ? homePageAbonent.hashCode() : 0);
+        result = 31 * result + (group != null ? group.hashCode() : 0);
+        return result;
+    }
+
     public String getFirstAbonentName() {
         return firstAbonentName;
     }

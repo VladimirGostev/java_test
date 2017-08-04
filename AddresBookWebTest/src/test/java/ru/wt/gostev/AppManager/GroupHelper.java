@@ -2,7 +2,10 @@ package ru.wt.gostev.AppManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.wt.gostev.Model.GroupData;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by VGostev on 15.05.2017.
@@ -35,9 +38,9 @@ public class GroupHelper extends HelperBase{
         click(By.name("delete"));
     }
 
-    public void selectGroup() {
-        click(By.name("selected[]"));
-    }
+    public void selectGroup(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+     }
 
     public void modificationGroup() {
         click(By.xpath("//input[@name='edit']"));
@@ -56,5 +59,20 @@ public class GroupHelper extends HelperBase{
 
     public boolean isTheAGroup() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public int countGroup() {
+        return  wd.findElements(By.xpath("//span[@class='group']")).size();
+    }
+
+    public List<GroupData> getGroupList() {
+        List<GroupData> groups = new ArrayList<GroupData>();
+        List<WebElement> element = wd.findElements(By.name("selected[]"));
+        for(WebElement elements : element){
+           String name = elements.getText();
+            GroupData group = new GroupData(name, null, null);
+            groups.add(group);
+        }
+        return groups;
     }
 }

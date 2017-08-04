@@ -2,10 +2,17 @@ package ru.wt.gostev.AppManager;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.wt.gostev.Model.AbonentDate;
+import ru.wt.gostev.Model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by VGostev on 15.05.2017.
@@ -15,6 +22,7 @@ public class AbonentHelper extends HelperBase{
     public AbonentHelper(WebDriver wd) {
         super(wd);
     }
+
 
     public void fillAbonentForm(AbonentDate abonentDate, boolean creation) {
         type(By.name("firstname"),abonentDate.getFirstAbonentName());
@@ -49,6 +57,42 @@ public class AbonentHelper extends HelperBase{
     }
 
     public boolean isTheAAbonent() {
-        return isElementPresent(By.xpath(".//*[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+        return isElementPresent(By.name("selected[]"));
     }
+
+    public  void timeOut(){
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+
+    public int countAbonent() {
+        return wd.findElements(By.xpath("//input[@name='selected[]']")).size();
+    }
+
+    public void selectAbonent(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void clickButtonDeliteAbonent() {
+        click(By.xpath("//input[@value='Delete']"));
+    }
+
+    public void submitAlertWindows() {
+        wd.switchTo().alert().accept();
+    }
+
+    public List<AbonentDate> getAbonentList() {
+        List<AbonentDate> abonents = new ArrayList<AbonentDate>();
+        List<WebElement> element = wd.findElements(By.name("selected[]"));
+        for(WebElement elements : element){
+            String firstname = elements.getText();
+            AbonentDate abonent = new AbonentDate(firstname,
+                    null, null, null,
+                    null, null,
+                    null, null, null,
+                    null, null );
+            abonents.add(abonent);
+        }
+        return abonents;
+    }
+
 }

@@ -5,6 +5,8 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by VGostev on 15.05.2017.
  */
@@ -29,7 +31,7 @@ public class HelperBase {
             }
         }
     }
-    public  boolean isAlertPresent() {
+    public  boolean isAlertPresent() { //метод для
         try {
             wd.switchTo().alert();
             return true;
@@ -47,4 +49,5 @@ public class HelperBase {
             return false;
         }
     }
+
 }

@@ -10,7 +10,7 @@ import ru.wt.gostev.AppManager.AplicationManager;
  */
 public class TestBase {
 
-    protected final AplicationManager app = new AplicationManager(BrowserType.CHROME);
+    protected final AplicationManager app = new AplicationManager(BrowserType.FIREFOX);
 
     @Before
     public void setUp() throws Exception {
